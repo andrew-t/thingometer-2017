@@ -34,3 +34,5 @@ console.log('Points checked.');
 
 fs.writeFileSync(__dirname + '/all.json',
 	JSON.stringify(combined));
+fs.writeFileSync(__dirname + '/all.js',
+	'var data = ' + JSON.stringify(combined) + ';');

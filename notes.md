@@ -2,6 +2,7 @@
 
 After processing, all images are 700 × 925
 
+https://en.wikipedia.org/wiki/United_Kingdom_general_election,_2017#Parties_and_candidates
 
 # Parties
 
