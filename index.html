@@ -5,8 +5,17 @@
 	<script type="text/javascript" src="http://github.andrewt.net/morpher-js/javascripts/morpher/morpher.js"></script>
 	<script type="text/javascript" src="img-markup/all.js"></script>
 	<script type="text/javascript" src="main.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	<form id="inputs">
+		<label for="may">Conservatives</label>
+		<input type="range" min="0" max="100" value="50" step="1" id="may" name="may">
+		<label for="corbyn">Labour</label>
+		<input type="range" min="0" max="100" value="50" step="1" id="corbyn" name="corbyn">
+		<label for="farron">Liberal Democrats</label>
+		<input type="range" min="0" max="100" value="50" step="1" id="farron" name="farron">
+	</form>
 	<div id="canvas-container"></div>
 </body>
 </html>
