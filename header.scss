@@ -1,0 +1,56 @@
+---
+---
+
+@import "https://fonts.googleapis.com/css?family=Open+Sans:400,700";
+
+@font-face {
+	font-family: 'Taste';
+	src: url("https://www.andrewt.net/fonts/Taste Book.otf");
+	font-weight: normal;
+	font-style: normal;
+}
+header {
+	font-family: 'Taste';
+	background: rgb(255, 199, 87);
+	padding: 3vmin;
+	font-size: 4vmin;
+	h1 {
+		font-weight: normal;
+		font-size: 8vmin;
+		margin: 0;
+	}
+	a {
+		text-decoration: none;
+		&:hover,
+		&:active,
+		&:focus {
+			text-decoration: underline;
+		}
+	}
+	&:after {
+		content: ' ';
+		background: rgb(75, 63, 115);
+		display: block;
+		height: 1vh;
+		border-top: 1vh solid rgb(17, 154, 162);
+		// adjust for padding:
+		width: calc(100% + 6vmin);
+		position: relative;
+		top: 3vmin;
+		left: -3vmin;
+	}
+}
+body {
+	font-family: 'Open Sans', 'Avenir', 'Product Sans', 'Helvetica', 'Arial', sans-serif;
+	a {
+		color: rgb(75, 63, 115);
+		&:visited {
+			color: rgb(75, 63, 115);
+		}
+		&:hover,
+		&:active,
+		&:focus {
+			color: rgb(17, 154, 162);
+		}
+	}
+}

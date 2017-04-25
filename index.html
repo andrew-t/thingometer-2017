@@ -6,9 +6,27 @@
 	<script type="text/javascript" src="img-markup/all.js"></script>
 	<script type="text/javascript" src="main.js"></script>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="header.css">
+	<link rel="icon" type="image/png" href="/img/favicon.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#ffc757">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@andrew_taylor">
+	<meta name="twitter:creator" content="@andrew_taylor">
+	<meta name="twitter:title" content="andrewt.net">
+	<meta name="twitter:description" content="Read the full post at andrewt.net">
+	<meta name="twitter:image" content="https://www.andrewt.net/img/favicon.png">
+	<meta property="og:title" content="andrewt.net">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://www.andrewt.net/">
+	<meta property="og:image" content="https://www.andrewt.net/img/favicon.png">
 </head>
 <body>
 	<main>
+		<header>
+			<a class="" href="https://www.andrewt.net">andrewt.net</a> /
+			<h1><a href="/">The Thingometer</a></h1>
+		</header>
 		<form id="inputs">
 			<label for="may">Conservatives</label>
 			<input type="range" min="0" max="100" value="50" step="1" id="may" name="may">
@@ -16,10 +34,16 @@
 			<input type="range" min="0" max="100" value="50" step="1" id="corbyn" name="corbyn">
 			<label for="farron">Liberal Democrats</label>
 			<input type="range" min="0" max="100" value="50" step="1" id="farron" name="farron">
+			<p>
+				This is a tool for visualising polling data
+				by creating a chimeric Prime Minister,
+				who is a weighted morph of the candidates. This version is built for the 2017 UK “snap” general election. <a href="http://github.andrewt.net/thingometer">The original was built for the 2015 election</a>.
+			</p>
+			<footer>
+			</footer>
 		</form>
 		<div class="output-container">
 			<div id="canvas-container" class="output"></div>
 		</div>
-	</main>
-</body>
+	</main></body>
 </html>
