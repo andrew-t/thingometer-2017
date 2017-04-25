@@ -23,7 +23,11 @@ const combined = {
 		mayFarron.images[1],
 	]
 };
-combined.images.forEach(i => i.src = 'img/' + i.src);
+combined.images.forEach(i => {
+	i.src = 'img/' + i.src;
+	i.x = 0;
+	i.y = 0;
+});
 
 for (let i = 1; i < combined.images.length; ++i)
 	if (!combined.images[i] ||

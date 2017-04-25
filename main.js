@@ -3,8 +3,13 @@ var morpher,
 
 document.addEventListener('DOMContentLoaded', function(){
 	morpher = new Morpher(data);
-	document.getElementById('canvas-container')
-		.appendChild(morpher.canvas);
+	// document.getElementById('canvas-container')
+	// 	.appendChild(morpher.canvas);
+	setInterval(() => 
+		document.getElementById('canvas-container')
+			.style.backgroundImage =
+				'url(' + morpher.canvas.toDataURL() + ')',
+		150);
 
 	reshuffle();
 
