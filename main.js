@@ -1,15 +1,16 @@
 var morpher,
-	debounceTime = 500;
+	debounceTime = 50;
 
 document.addEventListener('DOMContentLoaded', function(){
 	morpher = new Morpher(data);
-	// document.getElementById('canvas-container')
-	// 	.appendChild(morpher.canvas);
-	setInterval(() => 
+	function render() {
+		morpher.render();
 		document.getElementById('canvas-container')
 			.style.backgroundImage =
-				'url(' + morpher.canvas.toDataURL() + ')',
-		150);
+				'url(' + morpher.canvas.toDataURL() + ')';
+		window.requestAnimationFrame(render);
+	}
+	render();
 
 	reshuffle();
 
