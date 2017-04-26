@@ -30,7 +30,8 @@ function reshuffle() {
 	const weights = normalise({
 		corbyn: Math.round(Math.random() * 100),
 		may: Math.round(Math.random() * 100),
-		farron: Math.round(Math.random() * 100)
+		farron: Math.round(Math.random() * 100),
+		bartley: Math.round(Math.random() * 100)
 	});
 	Object.keys(weights).forEach(k =>
 		document.getElementById(k)
@@ -40,7 +41,7 @@ function reshuffle() {
 
 function update() {
 	const weights = {};
-	[ 'corbyn', 'may', 'farron' ]
+	[ 'corbyn', 'may', 'farron', 'bartley' ]
 		.forEach(k => weights[k] =
 			parseFloat(document.getElementById(k).value));
 	console.log(weights);

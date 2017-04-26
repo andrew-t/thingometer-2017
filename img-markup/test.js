@@ -1,17 +1,19 @@
 const fs = require('fs');
 
 const mayCorbyn = require('./may-corbyn.json'),
-	mayFarron = require('./may-farron.json');
+	mayFarron = require('./may-farron.json'),
+	mayBartley = require('./may-bartley.json');
 
 const triangles = [
 	mayCorbyn.triangles,
-	mayFarron.triangles
+	mayFarron.triangles,
+	mayBartley.triangles
 ];
 
 for (let i = 1; i < triangles.length; ++i)
 	if (!triangles[i] ||
-		JSON.stringify(triangles[i]) !=
-		JSON.stringify(triangles[0]))
+		serialiseTriangles(triangles[i]) !=
+		serialiseTriangles(triangles[0]))
 		console.log('Triangle error ' + i);
 console.log('Triangles checked.');
 
@@ -21,6 +23,7 @@ const combined = {
 		mayCorbyn.images[0],
 		mayCorbyn.images[1],
 		mayFarron.images[1],
+		mayBartley.images[1]
 	]
 };
 combined.images.forEach(i => {
@@ -40,3 +43,13 @@ fs.writeFileSync(__dirname + '/all.json',
 	JSON.stringify(combined));
 fs.writeFileSync(__dirname + '/all.js',
 	'var data = ' + JSON.stringify(combined) + ';');
+
+function serialiseTriangles(t) {
+	return JSON.stringify(
+		t.map(t => t.sort())
+			.sort((a, b) => tToN(a) - tToN(b)));
+}
+
+function tToN(t) {
+	return t[0] * 1000000 + t[1] * 1000 + t[2];
+}

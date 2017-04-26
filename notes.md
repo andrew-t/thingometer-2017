@@ -30,5 +30,6 @@ Paul Nuttalls: nutall.jpg (996 × 1264)
 ## Green Party
 Caroline Lucas: lucas.jpg (872 × 1243)
 Jonathan Bartley: bartley.jpg (5760 × 3840)
+(mark'd up)
 
 All images from Wikipedia
