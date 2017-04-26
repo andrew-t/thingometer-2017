@@ -7,7 +7,8 @@ let morpher,
 		bartley: 0.5,
 		nuttall: 0.5,
 		sturgeon: 0.5,
-		lucas: 0.5
+		lucas: 0.5,
+		wood: 0.5
 	};
 const names = Object.keys(weights);
 
