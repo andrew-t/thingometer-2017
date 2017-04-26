@@ -6,9 +6,16 @@ document.addEventListener('DOMContentLoaded', function(){
 	reshuffle();
 	function render() {
 		update();
+		const dataUrl = morpher.canvas.toDataURL();
+		document.getElementById('this-url')
+			.setAttribute('href', '/?' + Object.keys(weights)
+				.map(k => k + '=' + 1000 * Math.round(weights[k]) / 1000)
+				.join('&'));
+		document.getElementById('data-url')
+			.setAttribute('href', dataUrl);
 		document.getElementById('canvas-container')
 			.style.backgroundImage =
-				'url(' + morpher.canvas.toDataURL() + ')';
+				'url(' + dataUrl + ')';
 		window.requestAnimationFrame(render);
 	}
 	render();
@@ -19,19 +26,21 @@ function reshuffle() {
 		corbyn: Math.round(Math.random() * 100),
 		may: Math.round(Math.random() * 100),
 		farron: Math.round(Math.random() * 100),
-		bartley: Math.round(Math.random() * 100)
+		bartley: Math.round(Math.random() * 100),
+		nuttall: Math.round(Math.random() * 100)
 	});
 	Object.keys(weights).forEach(k =>
 		document.getElementById(k)
 			.value = weights[k] * 100);
 }
 
-let realtime = true;
+let realtime = true,
+	weights = {};
 function update() {
 	if (!realtime)
 		return;
-	const weights = {};
-	[ 'corbyn', 'may', 'farron', 'bartley' ]
+	weights = {};
+	[ 'corbyn', 'may', 'farron', 'bartley', 'nuttall' ]
 		.forEach(k => weights[k] =
 			parseFloat(document.getElementById(k).value));
 	morpher.set(dataWeights(weights));
