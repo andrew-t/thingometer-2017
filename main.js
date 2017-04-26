@@ -27,7 +27,8 @@ function reshuffle() {
 		may: Math.round(Math.random() * 100),
 		farron: Math.round(Math.random() * 100),
 		bartley: Math.round(Math.random() * 100),
-		nuttall: Math.round(Math.random() * 100)
+		nuttall: Math.round(Math.random() * 100),
+		sturgeon: Math.round(Math.random() * 100)
 	});
 	Object.keys(weights).forEach(k =>
 		document.getElementById(k)
@@ -40,7 +41,7 @@ function update() {
 	if (!realtime)
 		return;
 	weights = {};
-	[ 'corbyn', 'may', 'farron', 'bartley', 'nuttall' ]
+	[ 'corbyn', 'may', 'farron', 'bartley', 'nuttall', 'sturgeon' ]
 		.forEach(k => weights[k] =
 			parseFloat(document.getElementById(k).value));
 	morpher.set(dataWeights(weights));
