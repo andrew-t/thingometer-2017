@@ -16,6 +16,7 @@ Jeremy Corbyn: corbyn.jpg (722 × 960)
 
 ## SNP
 Nicola Sturgeon: sturgeon.jpg (710 × 872)
+(mark'd up)
 
 ## Liberal Democrats
 Tim Farron: farron.jpg (768 × 1014)
@@ -30,6 +31,7 @@ Paul Nuttalls: nutall.jpg (996 × 1264)
 
 ## Green Party
 Caroline Lucas: lucas.jpg (872 × 1243)
+(mark'd up)
 Jonathan Bartley: bartley.jpg (5760 × 3840)
 (mark'd up)
 

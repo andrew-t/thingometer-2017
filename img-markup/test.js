@@ -4,14 +4,16 @@ const mayCorbyn = require('./may-corbyn.json'),
 	mayFarron = require('./may-farron.json'),
 	mayBartley = require('./may-bartley.json'),
 	mayNuttall = require('./may-nuttall.json'),
-	maySturgeon = require('./may-sturgeon.json');
+	maySturgeon = require('./may-sturgeon.json'),
+	mayLucas = require('./may-lucas.json');
 
 const triangles = [
 	mayCorbyn.triangles,
 	mayFarron.triangles,
 	mayBartley.triangles,
 	mayNuttall.triangles,
-	maySturgeon.triangles
+	maySturgeon.triangles,
+	mayLucas.triangles
 ];
 
 for (let i = 1; i < triangles.length; ++i)
@@ -29,7 +31,8 @@ const combined = {
 		mayFarron.images[1],
 		mayBartley.images[1],
 		mayNuttall.images[1],
-		maySturgeon.images[1]
+		maySturgeon.images[1],
+		mayLucas.images[1]
 	]
 };
 combined.images.forEach(i => {

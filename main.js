@@ -1,5 +1,15 @@
-var morpher,
-	debounceTime = 50;
+let morpher,
+	realtime = true,
+	weights = {
+		corbyn: 0.5,
+		may: 0.5,
+		farron: 0.5,
+		bartley: 0.5,
+		nuttall: 0.5,
+		sturgeon: 0.5,
+		lucas: 0.5
+	};
+const names = Object.keys(weights);
 
 document.addEventListener('DOMContentLoaded', function(){
 	morpher = new Morpher(data);
@@ -22,28 +32,20 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 function reshuffle() {
-	const weights = normalise({
-		corbyn: Math.round(Math.random() * 100),
-		may: Math.round(Math.random() * 100),
-		farron: Math.round(Math.random() * 100),
-		bartley: Math.round(Math.random() * 100),
-		nuttall: Math.round(Math.random() * 100),
-		sturgeon: Math.round(Math.random() * 100)
-	});
+	names.forEach(n => weights[n] =
+		Math.round(Math.random() * 100));
+	normalise(weights);
 	Object.keys(weights).forEach(k =>
 		document.getElementById(k)
 			.value = weights[k] * 100);
 }
 
-let realtime = true,
-	weights = {};
 function update() {
 	if (!realtime)
 		return;
 	weights = {};
-	[ 'corbyn', 'may', 'farron', 'bartley', 'nuttall', 'sturgeon' ]
-		.forEach(k => weights[k] =
-			parseFloat(document.getElementById(k).value));
+	names.forEach(k => weights[k] =
+		parseFloat(document.getElementById(k).value));
 	morpher.set(dataWeights(weights));
 }
 
@@ -59,7 +61,7 @@ function normalise(w) {
 function dataWeights(w) {
 	w = normalise(w);
 	return data.images
-			// Get the filename
+		// Get the filename
 		.map(i => i.src.replace(/^.*\/([^/\.]+)\.[^\.]+$/, '$1'))
 		.map(i => w[i]);
 }
