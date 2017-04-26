@@ -4,17 +4,27 @@ let morpher,
 		corbyn: 0.5,
 		may: 0.5,
 		farron: 0.5,
-		bartley: 0.5,
 		nuttall: 0.5,
 		sturgeon: 0.5,
-		lucas: 0.5,
-		wood: 0.5
+		wood: 0.5,
+		greens: 0.5,
+		'bartley-lucas': 0.5,
 	};
 const names = Object.keys(weights);
 
 document.addEventListener('DOMContentLoaded', function(){
 	morpher = new Morpher(data);
 	reshuffle();
+	if (location.search)
+		location.search.substr(1).split('&').forEach(q => {
+			const bits = q.split('=');
+			if (bits.length == 2) try {
+				document.getElementById(bits[0])
+					.value = parseFloat(bits[1]);
+			} catch (e) {
+				console.log(e);
+			}
+		});
 	function render() {
 		update();
 		const dataUrl = morpher.canvas.toDataURL();
@@ -60,7 +70,13 @@ function normalise(w) {
 }
 
 function dataWeights(w) {
+	let bartleyLucas = w['bartley-lucas'] / 100;
+	w = Object.assign({}, w); // clone
+	delete w['bartley-lucas'];
 	w = normalise(w);
+	w.bartley = w.greens * (1 - bartleyLucas);
+	w.lucas = w.greens * bartleyLucas;
+	delete w.greens;
 	return data.images
 		// Get the filename
 		.map(i => i.src.replace(/^.*\/([^/\.]+)\.[^\.]+$/, '$1'))
