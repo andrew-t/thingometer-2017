@@ -51,12 +51,14 @@ class Morpher {
     	this.canvas = this.renderer.domElement;
 	}
 
-	set(weights) {
+	set(skinWeights, boneWeights) {
+		if (!boneWeights)
+			boneWeights = skinWeights;
 		let total = 0;
 		const xy = [];
 		for (let i = 0; i < this.pointCount; ++i) {
 			xy[i] = { x: 0, y: 0 };
-			weights.forEach((w, j) => {
+			boneWeights.forEach((w, j) => {
 				const point = this.data.images[j].points[i];
 				xy[i].x += point.x * w;
 				xy[i].y += point.y * w;
@@ -69,7 +71,7 @@ class Morpher {
 			}
 			g.verticesNeedUpdate = true;
 		});
-		weights.forEach((weight, layer) => {
+		skinWeights.forEach((weight, layer) => {
 			total += weight;
 			this.materials[layer].opacity = weight / total;
 		});

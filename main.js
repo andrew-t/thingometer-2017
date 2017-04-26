@@ -26,12 +26,14 @@ function reshuffle() {
 			.value = weights[k] * 100);
 }
 
+let realtime = true;
 function update() {
+	if (!realtime)
+		return;
 	const weights = {};
 	[ 'corbyn', 'may', 'farron', 'bartley' ]
 		.forEach(k => weights[k] =
 			parseFloat(document.getElementById(k).value));
-	console.log(weights);
 	morpher.set(dataWeights(weights));
 }
 
