@@ -3,28 +3,15 @@ var morpher,
 
 document.addEventListener('DOMContentLoaded', function(){
 	morpher = new Morpher(data);
+	reshuffle();
 	function render() {
-		morpher.render();
+		update();
 		document.getElementById('canvas-container')
 			.style.backgroundImage =
 				'url(' + morpher.canvas.toDataURL() + ')';
 		window.requestAnimationFrame(render);
 	}
 	render();
-
-	reshuffle();
-
-	let h;
-	document.getElementById('inputs')
-		.addEventListener('change', e => {
-			if (h)
-				clearTimeout(h);
-			h = setTimeout(() => {
-				h = null;
-				update();
-			}, debounceTime);
-			e.preventDefault();
-		});
 });
 
 function reshuffle() {
@@ -37,7 +24,6 @@ function reshuffle() {
 	Object.keys(weights).forEach(k =>
 		document.getElementById(k)
 			.value = weights[k] * 100);
-	update();
 }
 
 function update() {
