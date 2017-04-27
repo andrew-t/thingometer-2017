@@ -45,12 +45,12 @@
 			flex: 0 0 auto;
 		}
 		form {
-			padding: 3vmin;
-			font-size: 3vmin;
+			padding: 4vmin;
+			font-size: 5vmin;
 			order: 3;
 			flex: 1 0 auto;
 			p {
-				font-size: 2vmin;
+				font-size: 4vmin;
 			}
 		}
 		.output-container {
@@ -107,8 +107,17 @@ main {
 			width: 100%;
 		}
 		input {
-			display: block;
-			width: 100%;
+			display: inline-block;
+			width: calc(100% - 5em);
+			margin: 0;
+			font-size: inherit;
+		}
+		span {
+			display: inline-block;
+			width: 5em;
+			text-overflow: ellipsis;
+			margin: 0;
+			text-align: right;
 		}
 	}
 	.output-container {

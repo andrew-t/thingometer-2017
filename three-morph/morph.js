@@ -13,15 +13,23 @@ class Morpher {
 			-1000, 1000);
 		this.scene.add(new THREE.AmbientLight(0xffffff));
 
-		this.materials = this.data.images.map((img, i) =>
-			new THREE.MeshBasicMaterial({
-				color: 0xffffff,
-				transparent: i > 0,
-				opacity: 1.0,
-				side: THREE.DoubleSide,
-				map: THREE.ImageUtils.loadTexture(
-					img.src)
-			}));
+		this.materials = this.data.images.map((img, i) => {
+			const loader = new THREE.TextureLoader(),
+				material = new THREE.MeshBasicMaterial({
+					color: 0xffffff,
+					transparent: i > 0,
+					opacity: 1.0,
+					side: THREE.DoubleSide
+				});
+			loader.load(img.src, texture => {
+				console.log('Loaded texture ' + img.src);
+				console.log(texture);
+				material.map = texture;
+				material.needsUpdate = true;
+				this._triggerEvent('load-texture', i);
+			});
+			return material;
+		});
 
 		this.geometries = this.data.images.map((img, i) => {
 			const g = new THREE.Geometry();
@@ -83,3 +91,5 @@ class Morpher {
 	}
 
 }
+
+eventise(Morpher);

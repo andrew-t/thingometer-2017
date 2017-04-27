@@ -1,5 +1,4 @@
 let morpher,
-	realtime = true,
 	weights = {
 		corbyn: 0.5,
 		may: 0.5,
@@ -25,20 +24,14 @@ document.addEventListener('DOMContentLoaded', function(){
 				console.log(e);
 			}
 		});
-	function render() {
-		update();
-		const dataUrl = morpher.canvas.toDataURL();
-		document.getElementById('this-url')
-			.setAttribute('href', '/?' + Object.keys(weights)
-				.map(k => k + '=' + 1000 * Math.round(weights[k]) / 1000)
-				.join('&'));
-		document.getElementById('data-url')
-			.setAttribute('href', dataUrl);
-		document.getElementById('canvas-container')
-			.style.backgroundImage =
-				'url(' + dataUrl + ')';
-		window.requestAnimationFrame(render);
-	}
+	morpher.addEventListener('load-texture', render);
+	window.addEventListener('resize', render);
+	names.forEach(k => {
+		document.getElementById(k)
+			.addEventListener('input', render);
+		document.getElementById(k)
+			.addEventListener('change', render);
+	});
 	render();
 });
 
@@ -49,15 +42,6 @@ function reshuffle() {
 	Object.keys(weights).forEach(k =>
 		document.getElementById(k)
 			.value = weights[k] * 100);
-}
-
-function update() {
-	if (!realtime)
-		return;
-	weights = {};
-	names.forEach(k => weights[k] =
-		parseFloat(document.getElementById(k).value));
-	morpher.set(dataWeights(weights));
 }
 
 function normalise(w) {
@@ -95,4 +79,27 @@ function setText(id, text) {
 	const label = document.getElementById(id);
 	if (label.innerHTML !== text)
 		label.innerHTML = text;
+}
+
+let requested = false;
+function render() {
+	if (requested) return;
+	requested = true;
+	window.requestAnimationFrame(() => {
+		requested = false;
+		weights = {};
+		names.forEach(k => weights[k] =
+			parseFloat(document.getElementById(k).value));
+		morpher.set(dataWeights(weights));
+		const dataUrl = morpher.canvas.toDataURL();
+		document.getElementById('this-url')
+			.setAttribute('href', '/?' + Object.keys(weights)
+				.map(k => k + '=' + 1000 * Math.round(weights[k]) / 1000)
+				.join('&'));
+		document.getElementById('data-url')
+			.setAttribute('href', dataUrl);
+		document.getElementById('canvas-container')
+			.style.backgroundImage =
+				'url(' + dataUrl + ')';
+	});
 }

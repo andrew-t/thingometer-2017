@@ -1,0 +1,3 @@
+[submodule "framerate"]
+	path = framerate
+	url = https://github.com/andrew-t/framerate.git
