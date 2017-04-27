@@ -82,6 +82,7 @@
 			overflow: auto;
 			p {
 				font-size: 2vmin;
+				text-align: justify;
 			}
 		}
 		.output-container {
@@ -131,6 +132,35 @@ main {
 			background-size: contain;
 			background-position: 50% 100%;
 			background-repeat: no-repeat;
+		}
+	}
+}
+
+#face-panel {
+	#toggle-face-panel {
+		display: none;
+		cursor: pointer;
+	}
+	input[type="range"] {
+		width: 100%;
+	}
+	input[type="checkbox"] {
+		+label {
+			display: inline;
+			&:after {
+				content: ' ';
+				height: 0;
+				display: block;
+			}
+		}
+	}
+	&.collapsed {
+		input,
+		label {
+			display: none !important;
+		}
+		#toggle-face-panel {
+			display: inline;
 		}
 	}
 }

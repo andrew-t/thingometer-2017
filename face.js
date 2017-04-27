@@ -37,12 +37,12 @@ function smile(amount) {
 
 function openMouth(amount) {
 	data.images.forEach(img => {
-		m(32, 59, 0.10);
-		m(35, 59, 0.10);
+		m(32, 66, 0.10);
+		m(35, 66, 0.10);
 		m(31, 59, 0.15);
 		m(34, 59, 0.15);
-		m(33, 59, 0.10);
-		m(36, 59, 0.10);
+		m(33, 64, 0.10);
+		m(36, 64, 0.10);
 		m(62, 59, 0.10);
 		m(63, 59, 0.10);
 		function m(n, target, baseAmount) {
