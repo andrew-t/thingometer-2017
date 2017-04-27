@@ -106,18 +106,16 @@ main {
 			color: rgb(17, 154, 162);
 			width: 100%;
 		}
-		input {
-			display: inline-block;
-			width: calc(100% - 5.5em);
-			margin: 0;
-			font-size: inherit;
-		}
-		span {
-			display: inline-block;
-			width: 5em;
-			text-overflow: ellipsis;
-			margin: 0;
-			text-align: right;
+		.input-container {
+			display: flex;
+			flex-direction: row;
+			input {
+				flex: 1 0 auto;
+			}
+			span {
+				flex: 0 0 5em;
+				text-align: right;
+			}
 		}
 	}
 	.output-container {
