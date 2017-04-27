@@ -71,7 +71,8 @@ function dataWeights(w) {
 			'% (' + Math.round(w[k] * 100) + '%)');
 	});
 	delete w.greens;
-	setText('bartley-lucas-percent', bartleyLucas * 100 + '%');
+	setText('bartley-lucas-percent',
+		Math.round(bartleyLucas * 100) + '%');
 	return data.images
 		// Get the filename
 		.map(i => i.src.replace(/^.*\/([^/\.]+)\.[^\.]+$/, '$1'))
