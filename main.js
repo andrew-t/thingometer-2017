@@ -76,9 +76,23 @@ function dataWeights(w) {
 	w = normalise(w);
 	w.bartley = w.greens * (1 - bartleyLucas);
 	w.lucas = w.greens * bartleyLucas;
+	Object.keys(w).forEach(k => {
+		if (k == 'bartley' || k == 'lucas')
+			return;
+		setText(k + '-percent',
+			document.getElementById(k).value +
+			'% (' + Math.round(w[k] * 100) + '%)');
+	});
 	delete w.greens;
+	setText('bartley-lucas-percent', bartleyLucas * 100 + '%');
 	return data.images
 		// Get the filename
 		.map(i => i.src.replace(/^.*\/([^/\.]+)\.[^\.]+$/, '$1'))
 		.map(i => w[i]);
+}
+
+function setText(id, text) {
+	const label = document.getElementById(id);
+	if (label.innerHTML !== text)
+		label.innerHTML = text;
 }
