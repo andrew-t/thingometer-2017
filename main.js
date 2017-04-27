@@ -45,11 +45,14 @@ function reshuffle() {
 }
 
 function normalise(w) {
-	const t = Object.keys(w)
-				.map(k => w[k])
-				.reduce((p, n) => p + n);
-	Object.keys(w).forEach(k =>
-		w[k] = w[k] / t);
+	const keys = Object.keys(w),
+		t = keys
+			.map(k => w[k])
+			.reduce((p, n) => p + n);
+	if (t == 0)
+		keys.forEach(k => w[k] = 1 / keys.length);
+	else
+		keys.forEach(k => w[k] = w[k] / t);
 	return w;
 }
 
